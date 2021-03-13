@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter import messagebox
 from database import DB as dbh
 
-db=dbh()
+db = dbh()
+
+
 def get_selected_row(event):
     global selected_tuple
     index = list_space.curselection()[0]
