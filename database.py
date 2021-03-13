@@ -5,7 +5,6 @@ from tkinter import messagebox
 
 class DB:
     def __init__(self):
-
         self.conn = sqlite3.connect("mybooks.db")
         self.cur = self.conn.cursor()
         self.cur.execute(
