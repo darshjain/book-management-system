@@ -3,7 +3,7 @@ from tkinter import messagebox
 from database import DB as dbh
 
 db = dbh()
-
+selected_tuple=[]
 
 def get_selected_row(event):
     global selected_tuple
