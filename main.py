@@ -40,6 +40,7 @@ def add_command():
 
 def delete_command():
     db.delete(selected_tuple[0])
+    view_command()
 
 
 def update_command():
