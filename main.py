@@ -48,6 +48,13 @@ def update_command():
     db.update(selected_tuple[0], title_text.get(), author_text.get())
 
 
+def on_closing():
+    dd = db
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        window.destroy()
+        del dd
+
+
 window = Tk()
 
 window.title("My Books")
@@ -60,14 +67,6 @@ img_save = ImageTk.PhotoImage(img)
 canv.create_image(0, 0, anchor=NW, image=img_save)
 # ================== CHANGES HERE END ========================
 window.geometry("700x700")  # window size
-
-
-def on_closing():
-    dd = db
-    if messagebox.askokcancel("Quit", "Do you want to quit?"):
-        window.destroy()
-        del dd
-
 
 window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -92,19 +91,19 @@ entry_isbn = Entry(window, textvariable=isbn_text, bg="floral white")
 
 lb2.grid(row=1, column=2, pady=30, padx=50, columnspan=4)
 
-lbl_title.grid(row=4, column=1)
+lbl_title.grid(row=4, column=1, padx=50)
 entry_title.grid(row=4, column=2)
-lbl_isbn.grid(row=5, column=1)
+lbl_isbn.grid(row=5, column=1, padx=50)
 entry_isbn.grid(row=5, column=2)
-lbl_author.grid(row=6, column=1)
+lbl_author.grid(row=6, column=1, padx=50)
 entry_author.grid(row=6, column=2)
 
 
 list_space = Listbox(window, height=25, width=65, bg="floral white")
-list_space.grid(row=8, column=1, rowspan=8, columnspan=2)
+list_space.grid(row=8, column=1, rowspan=8, columnspan=2, padx=50, pady=40)
 
 scrollbar = Scrollbar(window)
-scrollbar.grid(row=8, column=3, rowspan=6)
+scrollbar.grid(row=8, column=3, rowspan=6, padx=20)
 
 list_space.configure(yscrollcommand=scrollbar.set)
 scrollbar.configure(command=list_space.yview)
@@ -134,5 +133,5 @@ btn_delete.grid(row=13, column=4, padx=0)
 btn_close = Button(window, text="Close", width=12,
                    command=window.destroy, bg="lavenderBlush2")
 btn_close.grid(row=14, column=4)
-window.wm_attributes('-transparentcolor', 'green')
+
 window.mainloop()
