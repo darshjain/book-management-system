@@ -41,3 +41,13 @@ class DB:
             "SELECT * FROM book WHERE title=? OR author=?", (title, author,))
         rows = self.cur.fetchall()
         return rows
+    
+    def sell(self,bookid,customerid,date,price):
+        print("SELL FUNCTION")
+        self.conn.commit()
+        self.view()
+
+    def viewsales(self,issueid,bookid,customerid,date,price):
+        print("view sales")
+        self.conn.commit()
+        self.view()
