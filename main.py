@@ -130,8 +130,18 @@ btn_delete = Button(window, text="Delete selected", width=12,
                     command=delete_command, bg="lavenderBlush2")
 btn_delete.grid(row=13, column=4, padx=0)
 
+
+btn_sell = Button(window, text="Sell selected", width=12,
+                  bg="lavenderBlush2")
+btn_sell.grid(row=14, column=4, padx=0)
+
+btn_viewsale = Button(window, text="Delete selected",
+                      width=12, bg="lavenderBlush2")
+btn_viewsale.grid(row=15, column=4, padx=0)
+
+
 btn_close = Button(window, text="Close", width=12,
                    command=window.destroy, bg="lavenderBlush2")
-btn_close.grid(row=14, column=4)
+btn_close.grid(row=16, column=4)
 
 window.mainloop()
