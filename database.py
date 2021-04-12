@@ -38,16 +38,22 @@ class DB:
 
     def search(self, title="", author=""):
         self.cur.execute(
-            "SELECT * FROM book WHERE title=? OR author=?", (title, author,))
+            "SELECT * FROM book WHERE title=? OR author=?", (title, author))
         rows = self.cur.fetchall()
         return rows
-    
-    def sell(self,bookid,customerid,date,price):
+
+    def customer_add(self, customerid, customername, customercontact):
+        print(customercontact)
+        print(customername)
+        self.cur.execute("INSERT INTO customer VALUES (NULL,?,?)",(customername, customercontact))
+        self.conn.commit()
+        
+    def sell(self, bookid, customerid, date, price):
         print("SELL FUNCTION")
         self.conn.commit()
         self.view()
 
-    def viewsales(self,issueid,bookid,customerid,date,price):
+    def viewsales(self, issueid, bookid, customerid, date, price):
         print("view sales")
         self.conn.commit()
         self.view()

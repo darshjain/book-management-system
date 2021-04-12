@@ -53,7 +53,47 @@ def on_closing():
     if messagebox.askokcancel("Quit", "Do you want to quit?"):
         window.destroy()
         del dd
+# def customer():
+#     global selected_tuple,customercontact,customername,customerid
+#     db.customer_add(customerid.get(),customername.get(),customercontact.get())
+    # sell.new_window.destroy()
 
+def sell():
+    # global selected_tuple,customercontact,customername,customerid
+    new_window=Tk()
+    new_window.title("SELL THE BOOK")
+    new_window.geometry("700x700")
+    book_sell=selected_tuple[0]
+    print(book_sell,"Sell")
+
+
+    lbl_custname = Label(new_window, text="Name Of Customer")
+    lbl_custnum = Label(new_window, text="ID of Customer")
+    lbl_custcont = Label(new_window, text="Contact of Customer")
+
+    customername = StringVar()
+    entry_customername = Entry(new_window, textvariable=customername, bg="floral white")
+
+    customerid = StringVar()
+    entry_customerid = Entry(new_window, textvariable=customerid, bg="floral white")
+
+    customercontact = StringVar()
+    entry_customercontact = Entry(new_window, textvariable=customercontact, bg="floral white")
+    
+    x=lambda :db.customer_add(entry_customerid.get(),entry_customername.get(),entry_customercontact.get())
+
+    btn_customeradd=Button(new_window,text="ADD CUSTOMER",bg="floral white",command=x)
+    btn_customeradd.grid(row=4,column=0)
+
+    lbl_custname.grid(row=1,column=0)
+    lbl_custnum.grid(row=2,column=0)
+    lbl_custcont.grid(row=3,column=0)
+
+    entry_customername.grid(row=1,column=1)
+    entry_customerid.grid(row=2,column=1)
+    entry_customercontact.grid(row=3,column=1)
+
+    new_window.mainloop()
 
 window = Tk()
 
@@ -131,11 +171,11 @@ btn_delete = Button(window, text="Delete selected", width=12,
 btn_delete.grid(row=13, column=4, padx=0)
 
 
-btn_sell = Button(window, text="Sell selected", width=12,
-                  bg="lavenderBlush2")
+btn_sell = Button(window, text="Sell Selected", width=12,
+                  bg="lavenderBlush2",command=sell)
 btn_sell.grid(row=14, column=4, padx=0)
 
-btn_viewsale = Button(window, text="Delete selected",
+btn_viewsale = Button(window, text="View Sales",
                       width=12, bg="lavenderBlush2")
 btn_viewsale.grid(row=15, column=4, padx=0)
 
