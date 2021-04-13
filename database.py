@@ -50,6 +50,7 @@ class DB:
         
     def sell(self, bookid, customerid, date, price):
         print("SELL FUNCTION")
+        self.cur.execute("INSERT INTO sale VALUES (NULL,?,?,?,?)",(bookid,customerid,date,price))
         self.conn.commit()
         self.view()
 

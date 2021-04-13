@@ -58,13 +58,11 @@ def on_closing():
 #     db.customer_add(customerid.get(),customername.get(),customercontact.get())
     # sell.new_window.destroy()
 
-def sell():
+def customerinfo():
     # global selected_tuple,customercontact,customername,customerid
     new_window=Tk()
-    new_window.title("SELL THE BOOK")
+    new_window.title("ADD A NEW CUSTOMER")
     new_window.geometry("700x700")
-    book_sell=selected_tuple[0]
-    print(book_sell,"Sell")
 
 
     lbl_custname = Label(new_window, text="Name Of Customer")
@@ -94,6 +92,40 @@ def sell():
     entry_customercontact.grid(row=3,column=1)
 
     new_window.mainloop()
+
+
+def makesale():
+    global selected_tuple
+    book=selected_tuple[0]
+    sale_window=Tk()
+    sale_window.geometry("700x700")
+    sale_window.title("Sales")
+
+    lbl_custnum = Label(sale_window, text="ID of Customer")
+    lbl_saledate = Label(sale_window, text="DATE")
+    lbl_price=Label(sale_window,text="Price Of Sale")
+
+    sale_custid = StringVar()
+    entry_sale_custid = Entry(sale_window, textvariable=sale_custid, bg="floral white")
+
+    datesale = StringVar()
+    entry_datesale = Entry(sale_window, textvariable=datesale, bg="floral white")
+
+    sale_price = StringVar()
+    entry_sale_price = Entry(sale_window, textvariable=sale_price, bg="floral white")
+
+    lbl_custnum.grid(row=1,column=0)
+    lbl_saledate.grid(row=2,column=0)
+    lbl_price.grid(row=3,column=0)
+
+    entry_sale_custid.grid(row=1,column=1)
+    entry_datesale.grid(row=2,column=1)
+    entry_sale_price.grid(row=3,column=1)
+
+    btn_makesale=Button(sale_window,text="Sell The Book",bg="floral white")
+    btn_makesale.grid(row=4,column=0)
+
+    
 
 window = Tk()
 
@@ -171,13 +203,13 @@ btn_delete = Button(window, text="Delete selected", width=12,
 btn_delete.grid(row=13, column=4, padx=0)
 
 
-btn_sell = Button(window, text="Sell Selected", width=12,
-                  bg="lavenderBlush2",command=sell)
-btn_sell.grid(row=14, column=4, padx=0)
+btn_addcustomer = Button(window, text="Add a Customer", width=12,
+                  bg="lavenderBlush2",command=customerinfo)
+btn_addcustomer.grid(row=14, column=4, padx=0)
 
-btn_viewsale = Button(window, text="View Sales",
-                      width=12, bg="lavenderBlush2")
-btn_viewsale.grid(row=15, column=4, padx=0)
+btn_makesale = Button(window, text="Make a Sale",
+                      width=12, bg="lavenderBlush2",command=makesale)
+btn_makesale.grid(row=15, column=4, padx=0)
 
 
 btn_close = Button(window, text="Close", width=12,
