@@ -58,3 +58,6 @@ class DB:
         print("view sales")
         self.conn.commit()
         self.view()
+
+
+DB().sell('1','2','23 march','25')

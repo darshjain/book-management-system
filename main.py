@@ -58,87 +58,92 @@ def on_closing():
 #     db.customer_add(customerid.get(),customername.get(),customercontact.get())
     # sell.new_window.destroy()
 
+
 def customerinfo():
     # global selected_tuple,customercontact,customername,customerid
-    new_window=Tk()
+    new_window = Tk()
     new_window.title("ADD A NEW CUSTOMER")
     new_window.geometry("700x700")
-
 
     lbl_custname = Label(new_window, text="Name Of Customer")
     lbl_custnum = Label(new_window, text="ID of Customer")
     lbl_custcont = Label(new_window, text="Contact of Customer")
 
     customername = StringVar()
-    entry_customername = Entry(new_window, textvariable=customername, bg="floral white")
+    entry_customername = Entry(
+        new_window, textvariable=customername, bg="floral white")
 
     customerid = StringVar()
-    entry_customerid = Entry(new_window, textvariable=customerid, bg="floral white")
+    entry_customerid = Entry(
+        new_window, textvariable=customerid, bg="floral white")
 
     customercontact = StringVar()
-    entry_customercontact = Entry(new_window, textvariable=customercontact, bg="floral white")
-    
-    x=lambda :db.customer_add(entry_customerid.get(),entry_customername.get(),entry_customercontact.get())
+    entry_customercontact = Entry(
+        new_window, textvariable=customercontact, bg="floral white")
 
-    btn_customeradd=Button(new_window,text="ADD CUSTOMER",bg="floral white",command=x)
-    btn_customeradd.grid(row=4,column=0)
+    def x(): return db.customer_add(entry_customerid.get(),
+                                    entry_customername.get(), entry_customercontact.get())
 
-    lbl_custname.grid(row=1,column=0)
-    lbl_custnum.grid(row=2,column=0)
-    lbl_custcont.grid(row=3,column=0)
+    btn_customeradd = Button(
+        new_window, text="ADD CUSTOMER", bg="floral white", command=x)
+    btn_customeradd.grid(row=4, column=0)
 
-    entry_customername.grid(row=1,column=1)
-    entry_customerid.grid(row=2,column=1)
-    entry_customercontact.grid(row=3,column=1)
+    lbl_custname.grid(row=1, column=0)
+    lbl_custnum.grid(row=2, column=0)
+    lbl_custcont.grid(row=3, column=0)
+
+    entry_customername.grid(row=1, column=1)
+    entry_customerid.grid(row=2, column=1)
+    entry_customercontact.grid(row=3, column=1)
 
     new_window.mainloop()
 
 
 def makesale():
     global selected_tuple
-    book=selected_tuple[0]
-    sale_window=Tk()
+    book = selected_tuple[0]
+    sale_window = Tk()
     sale_window.geometry("700x700")
     sale_window.title("Sales")
 
     lbl_custnum = Label(sale_window, text="ID of Customer")
     lbl_saledate = Label(sale_window, text="DATE")
-    lbl_price=Label(sale_window,text="Price Of Sale")
+    lbl_price = Label(sale_window, text="Price Of Sale")
 
     sale_custid = StringVar()
-    entry_sale_custid = Entry(sale_window, textvariable=sale_custid, bg="floral white")
+    entry_sale_custid = Entry(
+        sale_window, textvariable=sale_custid, bg="floral white")
 
     datesale = StringVar()
-    entry_datesale = Entry(sale_window, textvariable=datesale, bg="floral white")
+    entry_datesale = Entry(
+        sale_window, textvariable=datesale, bg="floral white")
 
     sale_price = StringVar()
-    entry_sale_price = Entry(sale_window, textvariable=sale_price, bg="floral white")
+    entry_sale_price = Entry(
+        sale_window, textvariable=sale_price, bg="floral white")
 
-    lbl_custnum.grid(row=1,column=0)
-    lbl_saledate.grid(row=2,column=0)
-    lbl_price.grid(row=3,column=0)
+    lbl_custnum.grid(row=1, column=0)
+    lbl_saledate.grid(row=2, column=0)
+    lbl_price.grid(row=3, column=0)
 
-    entry_sale_custid.grid(row=1,column=1)
-    entry_datesale.grid(row=2,column=1)
-    entry_sale_price.grid(row=3,column=1)
+    entry_sale_custid.grid(row=1, column=1)
+    entry_datesale.grid(row=2, column=1)
+    entry_sale_price.grid(row=3, column=1)
 
-    btn_makesale=Button(sale_window,text="Sell The Book",bg="floral white")
-    btn_makesale.grid(row=4,column=0)
-
-    
+    btn_makesale = Button(sale_window, text="Sell The Book", bg="floral white")
+    btn_makesale.grid(row=4, column=0)
+    sale_window.mainloop()
 
 window = Tk()
 
 window.title("My Books")
-# ================== CHANGES HERE START========================
 canv = Canvas(window, width=700, height=700, bg='white')
 canv.place(relx=0, rely=0, anchor=NW)
 img = Image.open("lib3.png")
-img = img.resize((700, 700), Image.ANTIALIAS)  # PIL solution
+img = img.resize((700, 700), Image.ANTIALIAS)
 img_save = ImageTk.PhotoImage(img)
 canv.create_image(0, 0, anchor=NW, image=img_save)
-# ================== CHANGES HERE END ========================
-window.geometry("700x700")  # window size
+window.geometry("700x700")
 
 window.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -204,11 +209,11 @@ btn_delete.grid(row=13, column=4, padx=0)
 
 
 btn_addcustomer = Button(window, text="Add a Customer", width=12,
-                  bg="lavenderBlush2",command=customerinfo)
+                         bg="lavenderBlush2", command=customerinfo)
 btn_addcustomer.grid(row=14, column=4, padx=0)
 
 btn_makesale = Button(window, text="Make a Sale",
-                      width=12, bg="lavenderBlush2",command=makesale)
+                      width=12, bg="lavenderBlush2", command=makesale)
 btn_makesale.grid(row=15, column=4, padx=0)
 
 
