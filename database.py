@@ -59,5 +59,3 @@ class DB:
         self.conn.commit()
         self.view()
 
-
-DB().sell('1','2','23 march','25')

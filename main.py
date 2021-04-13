@@ -130,9 +130,14 @@ def makesale():
     entry_datesale.grid(row=2, column=1)
     entry_sale_price.grid(row=3, column=1)
 
-    btn_makesale = Button(sale_window, text="Sell The Book", bg="floral white")
+    def x(): return db.sell(book, entry_sale_custid.get(),
+                            entry_datesale.get(), entry_sale_price.get())
+
+    btn_makesale = Button(sale_window, text="Sell The Book",
+                          bg="floral white", command=x)
     btn_makesale.grid(row=4, column=0)
     sale_window.mainloop()
+
 
 window = Tk()
 
