@@ -53,10 +53,6 @@ def on_closing():
     if messagebox.askokcancel("Quit", "Do you want to quit?"):
         window.destroy()
         del dd
-# def customer():
-#     global selected_tuple,customercontact,customername,customerid
-#     db.customer_add(customerid.get(),customername.get(),customercontact.get())
-    # sell.new_window.destroy()
 
 
 def customerinfo():
