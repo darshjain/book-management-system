@@ -43,17 +43,20 @@ class DB:
         return rows
 
     def customer_add(self, customerid, customername, customercontact):
-        self.cur.execute("INSERT INTO customer VALUES (NULL,?,?)",(customername, customercontact))
+        self.cur.execute("INSERT INTO customer VALUES (NULL,?,?)",
+                         (customername, customercontact))
         self.conn.commit()
-        
+
     def sell(self, bookid, customerid, date, price):
-        self.cur.execute("INSERT INTO sale VALUES (NULL,?,?,?,?)",(bookid,customerid,date,price))
+        self.cur.execute("INSERT INTO sale VALUES (NULL,?,?,?,?)",
+                         (bookid, customerid, date, price))
         self.conn.commit()
         self.view()
 
     def viewsales(self):
-        self.cur.execute("SELECT sale.date,customer.name,book.title,sale.price FROM sale INNER JOIN customer,book where sale.bookid = book.id AND sale.customerid = customer.customerid")
-        rows=self.cur.fetchall()
+        self.cur.execute(
+            "SELECT sale.date,customer.name,book.title,sale.price FROM sale INNER JOIN customer,book where sale.bookid = book.id AND sale.customerid = customer.customerid")
+        rows = self.cur.fetchall()
         return rows
         self.conn.commit()
         self.view()

@@ -135,6 +135,24 @@ def makesale():
     sale_window.mainloop()
 
 
+def viewsale():
+
+    view_window = Tk()
+    view_window.title("Sales Information")
+    view_window.geometry("700x700")
+    list = Listbox(view_window, height=25, width=65, bg="floral white")
+    list.grid(row=8, column=1, rowspan=8, columnspan=2, padx=50, pady=40)
+
+    scrollbar = Scrollbar(view_window)
+    scrollbar.grid(row=8, column=3, rowspan=6, padx=20)
+
+    list.configure(yscrollcommand=scrollbar.set)
+    scrollbar.configure(command=list.yview)
+    for row in db.viewsales():
+        list.insert(END, row)
+    view_window.mainloop()
+
+
 window = Tk()
 
 window.title("My Books")
@@ -217,9 +235,12 @@ btn_makesale = Button(window, text="Make a Sale",
                       width=12, bg="lavenderBlush2", command=makesale)
 btn_makesale.grid(row=15, column=4, padx=0)
 
+btn_makesale = Button(window, text="View Sales",
+                      width=12, bg="lavenderBlush2", command=viewsale)
+btn_makesale.grid(row=16, column=4, padx=0)
 
 btn_close = Button(window, text="Close", width=12,
                    command=window.destroy, bg="lavenderBlush2")
-btn_close.grid(row=16, column=4)
+btn_close.grid(row=17, column=4)
 
 window.mainloop()
