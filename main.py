@@ -112,11 +112,11 @@ def makesale():
 
     datesale = StringVar()
     entry_datesale = Entry(
-        sale_window, textvariable=datesale, bg="floral white")
+        sale_window, textvariable=datesale)
 
     sale_price = StringVar()
     entry_sale_price = Entry(
-        sale_window, textvariable=sale_price, bg="floral white")
+        sale_window, textvariable=sale_price)
 
     lbl_custnum.grid(row=1, column=0)
     lbl_saledate.grid(row=2, column=0)
@@ -129,8 +129,8 @@ def makesale():
     def x(): return db.sell(book, entry_sale_custid.get(),
                             entry_datesale.get(), entry_sale_price.get())
 
-    btn_makesale = Button(sale_window, text="Sell The Book",
-                          bg="floral white", command=x)
+    btn_makesale = Button(sale_window, text="Sell Book",
+                           command=x)
     btn_makesale.grid(row=4, column=0)
     sale_window.mainloop()
 
@@ -138,8 +138,8 @@ def makesale():
 def viewsale():
 
     view_window = Tk()
-    view_window.title("Sales Information")
-    view_window.geometry("700x700")
+    view_window.title("SalesInformation")
+    view_window.geometry("800x700")
     list = Listbox(view_window, height=25, width=65, bg="floral white")
     list.grid(row=8, column=1, rowspan=8, columnspan=2, padx=50, pady=40)
 
